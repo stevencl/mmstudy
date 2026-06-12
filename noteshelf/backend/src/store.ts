@@ -1,0 +1,75 @@
+import { randomUUID } from 'node:crypto';
+import type {
+  CreateNoteInput,
+  Note,
+  UpdateNoteInput,
+} from '@noteshelf/shared';
+import { normaliseTags } from './notes.js';
+
+/** A tiny in-memory store. Data resets when the server restarts. */
+class NoteStore {
+  private notes = new Map<string, Note>();
+
+  list(): Note[] {
+    return [...this.notes.values()].sort((a, b) =>
+      b.updatedAt.localeCompare(a.updatedAt),
+    );
+  }
+
+  get(id: string): Note | undefined {
+    return this.notes.get(id);
+  }
+
+  create(input: CreateNoteInput): Note {
+    const now = new Date().toISOString();
+    const note: Note = {
+      id: randomUUID(),
+      title: input.title,
+      body: input.body,
+      tags: normaliseTags(input.tags),
+      createdAt: now,
+      updatedAt: now,
+    };
+    this.notes.set(note.id, note);
+    return note;
+  }
+
+  update(id: string, input: UpdateNoteInput): Note | undefined {
+    const existing = this.notes.get(id);
+    if (!existing) return undefined;
+    const updated: Note = {
+      ...existing,
+      title: input.title ?? existing.title,
+      body: input.body ?? existing.body,
+      tags: input.tags ? normaliseTags(input.tags) : existing.tags,
+      updatedAt: new Date().toISOString(),
+    };
+    this.notes.set(id, updated);
+    return updated;
+  }
+
+  remove(id: string): boolean {
+    return this.notes.delete(id);
+  }
+
+  seed(): void {
+    this.create({
+      title: 'Welcome to Noteshelf',
+      body: 'This is a sample note. Create, tag, filter, and search your notes.',
+      tags: ['Welcome', 'Getting-Started'],
+    });
+    this.create({
+      title: 'Shopping list',
+      body: 'Milk, eggs, coffee.',
+      tags: ['Personal', 'Errands'],
+    });
+    this.create({
+      title: 'Sprint planning notes',
+      body: 'Discuss roadmap and assign tasks.',
+      tags: ['Work', 'Planning'],
+    });
+  }
+}
+
+export const store = new NoteStore();
+store.seed();

@@ -1,0 +1,16 @@
+{
+  "name": "noteshelf",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Noteshelf — a simple note-taking app used as the stimulus for the multi-chat mental model study.",
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm --workspace @noteshelf/backend run dev",
+    "dev:frontend": "npm --workspace @noteshelf/frontend run dev",
+    "typecheck": "npm --workspace @noteshelf/shared run typecheck && npm --workspace @noteshelf/backend run typecheck && npm --workspace @noteshelf/frontend run typecheck"
+  }
+}
