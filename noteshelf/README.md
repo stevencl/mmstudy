@@ -1,15 +1,17 @@
 # Noteshelf
 
-A small, deliberately simple **note-taking app** used as the stimulus
-application for the *Multi-Chat Mental Model Study*. It is designed to be read
-and understood in a few minutes.
+A small, deliberately simple **note-taking app**. It is designed to be read and
+understood in a few minutes, making it a clean starting point for experimenting,
+learning, or building out new features.
 
 ## What it does
 
-- Create, edit, and delete notes
-- Add tags to notes
-- Filter notes by tag
-- Search notes
+- Create notes (title + body)
+- View notes
+- Delete notes
+
+That's deliberately all it does today. **Tagging, filtering, and search do not
+exist yet** — they're natural next features to add.
 
 ## Structure
 
@@ -18,16 +20,27 @@ noteshelf/
   frontend/   React + Vite + TypeScript web client
   backend/    Express REST API with an in-memory store
   shared/     TypeScript types shared by frontend and backend
-  tests/      (empty — adding tests is the first study task)
+  tests/      (empty — a good place to start adding tests)
+  .github/chatmodes/   custom agents: Frontend and Backend specialists
 ```
 
 The three layers are intentionally small:
 
 | Layer    | Key files |
 | -------- | --------- |
-| shared   | `shared/src/index.ts` — `Note`, inputs, query types, open contracts |
-| backend  | `backend/src/server.ts` (routes), `notes.ts` (tag/filter/search logic), `store.ts` (in-memory data) |
-| frontend | `frontend/src/App.tsx`, `components/`, `tags.ts` (tag handling), `api.ts` (HTTP client) |
+| shared   | `shared/src/index.ts` — `Note`, create/update inputs, the home for cross-cutting contracts |
+| backend  | `backend/src/server.ts` (routes), `store.ts` (in-memory data) |
+| frontend | `frontend/src/App.tsx`, `components/`, `api.ts` (HTTP client) |
+
+## Custom agents
+
+Two custom agents are defined in `.github/chatmodes/` for use in tools that
+support them (e.g. GitHub Copilot in VS Code):
+
+- **Frontend** — owns `frontend/`, may read `shared/`, must not edit `backend/`.
+- **Backend** — owns `backend/`, may read/extend `shared/`, must not edit `frontend/`.
+
+These roles keep changes scoped to a single layer at a time.
 
 ## Running it
 
@@ -53,10 +66,9 @@ and resets whenever the backend restarts.
 npm run typecheck
 ```
 
-## A note for facilitators
+## Contributing
 
-This codebase contains a small number of **intentional cross-layer
-inconsistencies** used to provoke breakdowns during the study. They are not
-documented here on purpose — see the facilitation kit's
-*moderator-only perturbation guide*. Please don't share that guide with
-participants.
+Noteshelf is intentionally minimal, so it's easy to extend. Tagging, filtering,
+search, and persistent storage are all natural additions. Keep changes scoped to
+a single layer where possible, and update the shared types in `shared/src` when
+you change a contract that crosses the frontend/backend boundary.

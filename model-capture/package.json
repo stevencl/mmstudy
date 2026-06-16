@@ -1,0 +1,21 @@
+{
+  "name": "model-capture",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ModelCapture — conceptual-model whiteboard capture tool for the Multi-Chat Mental Model Study.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm --workspace @model-capture/backend run dev",
+    "dev:frontend": "npm --workspace @model-capture/frontend run dev",
+    "build": "npm --workspace @model-capture/frontend run build",
+    "typecheck": "npm --workspace @model-capture/backend run typecheck && npm --workspace @model-capture/frontend run typecheck",
+    "start": "npm --workspace @model-capture/backend run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

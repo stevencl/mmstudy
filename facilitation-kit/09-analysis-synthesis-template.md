@@ -31,12 +31,52 @@ For each recurring pattern, record frequency and representative evidence.
 
 | Pattern | # participants | Representative quote (ID, time) | Which perturbation surfaced it |
 | --- | --- | --- | --- |
-| Expect implicit context sharing across chats |  |  | P1/A, P3/C |
-| Assume a decision told to one chat propagates |  |  | P2/B |
+| Expect implicit context sharing across chats |  |  | P2, P3 |
+| Assume a decision told to one chat propagates |  |  | P2 |
 | Assume spawned helpers inherit parent context |  |  | P4 |
-| Treat a chat as identical to a task |  |  | Tasks 1–3 |
+| Treat a chat as identical to a task |  |  | Tasks 2–3 |
 | Conflate the shared scope with a single stream |  |  | Task 0, P5 |
 | Expect one block to halt all work (or vice versa) |  |  | P5 |
+| Read the Changes view as repo-wide, not session-scoped |  |  | P6 |
+| Expect a forked conversation to have its own files, not just its own history |  |  | P2b |
+
+## 2b. Parallel-work behaviour tally (Task 1, observation-only)
+
+Aggregate the §C2 codes from each scoring sheet. These are descriptive, not
+scored — use them to characterise *how* people work and to contextualise the
+divergence patterns above.
+
+| Code | Options → counts |
+| --- | --- |
+| **O1 Creation gesture** | new chat __ · new session __ · new window/tab __ · spawned sub-agent __ · unsure __ |
+| **O2 Naming pattern** | by layer __ · by task __ · by role/persona __ · default/unnamed __ · other __ |
+| **O3 Partitioning** | by layer __ · by task type __ · lead+assist __ · ad hoc __ |
+| **O4 Attention** | serial __ · rapid switch __ · wanted overview __ · lost track __ |
+| **O5 Permissions** | clean __ · confused which thread __ · approved blindly __ · n/a __ |
+| **O6 One vs several** | one shared __ · several independent __ · mixed __ |
+| **O7 Vocab drift** | same as baseline __ · shifted __ |
+
+> **Look for links:** e.g. do participants who create a "new session" (O1) and
+> frame work as "one shared thing" (O6) also score higher on Session≠Chat? Do
+> "new chat / several independent" participants cluster with the implicit-sharing
+> divergence pattern? Note any such associations (qualitative, given small N).
+
+## 2c. PRE → POST model shift (drawings)
+
+Compare each participant's **PRE** sketch (Task 0) with their **POST** drawing
+(replay). The delta isolates what the *tool exposure* taught them from what they
+*brought in*.
+
+| Direction of shift | # participants | Typical trigger (which breakdown) |
+| --- | --- | --- |
+| Toward the reference model (scope/stream became clearer) |  |  |
+| Away / more confused |  |  |
+| No change (model was stable — entrenched or already aligned) |  |  |
+
+> **Read the delta, not just the endpoint.** A participant who *started* with "one
+> big brain" and *moved* toward "separate windows, shared project" tells you the
+> product's model is **learnable**; one who stayed on "one big brain" despite the
+> breakdowns tells you it's **sticky** and needs stronger signposting.
 
 ## 3. Mental-model taxonomy
 

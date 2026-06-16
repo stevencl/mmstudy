@@ -7,7 +7,7 @@ interface Props {
 
 export function NoteList({ notes, onDelete }: Props) {
   if (notes.length === 0) {
-    return <p className="empty">No notes match.</p>;
+    return <p className="empty">No notes yet.</p>;
   }
   return (
     <ul className="note-list">
@@ -20,13 +20,6 @@ export function NoteList({ notes, onDelete }: Props) {
             </button>
           </div>
           {note.body && <p>{note.body}</p>}
-          <div className="tag-row">
-            {note.tags.map((tag) => (
-              <span key={tag} className="tag-chip">
-                {tag}
-              </span>
-            ))}
-          </div>
         </li>
       ))}
     </ul>

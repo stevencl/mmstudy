@@ -1,18 +1,13 @@
 import type {
   CreateNoteInput,
-  ListNotesQuery,
   Note,
   UpdateNoteInput,
 } from '@noteshelf/shared';
 
 const BASE = '/api/notes';
 
-export async function listNotes(query: ListNotesQuery = {}): Promise<Note[]> {
-  const params = new URLSearchParams();
-  if (query.search) params.set('search', query.search);
-  if (query.tags && query.tags.length > 0) params.set('tags', query.tags.join(','));
-  const qs = params.toString();
-  const res = await fetch(qs ? `${BASE}?${qs}` : BASE);
+export async function listNotes(): Promise<Note[]> {
+  const res = await fetch(BASE);
   if (!res.ok) throw new Error('Failed to load notes');
   return res.json();
 }

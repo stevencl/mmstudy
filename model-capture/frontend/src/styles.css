@@ -1,0 +1,136 @@
+:root {
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --ink: #1f2328;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --error: #b91c1c;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--ink); }
+
+/* ---- Participant capture screen ---- */
+.capture-wrap { display: flex; flex-direction: column; height: 100vh; }
+.capture-prompt {
+  padding: 14px 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "title btn" "sub btn";
+  align-items: center;
+  gap: 2px 16px;
+}
+.capture-prompt h1 { grid-area: title; font-size: 1.15rem; margin: 0; }
+.capture-prompt p { grid-area: sub; margin: 0; color: var(--muted); font-size: 0.9rem; max-width: 70ch; }
+.done-btn {
+  grid-area: btn;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.done-btn:disabled { opacity: 0.6; cursor: default; }
+.capture-canvas { flex: 1; min-height: 0; }
+
+.centered {
+  display: flex; align-items: center; justify-content: center;
+  height: 100vh; text-align: center; padding: 24px;
+}
+.centered h1 { font-size: 1.6rem; margin-bottom: 8px; }
+.centered p { color: var(--muted); max-width: 50ch; }
+
+/* ---- Moderator screens ---- */
+.mod-page { max-width: 960px; margin: 0 auto; padding: 28px 24px 80px; }
+.mod-header h1 { margin-bottom: 4px; }
+.mod-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 18px 0;
+}
+.mod-card h2 { margin-top: 0; }
+.active-banner { font-size: 1rem; }
+.pill {
+  display: inline-block; background: #eef2ff; color: var(--accent);
+  border-radius: 999px; padding: 2px 10px; font-weight: 600;
+}
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+.error { color: var(--error); }
+
+.form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+label { display: flex; flex-direction: column; font-size: 0.9rem; gap: 4px; }
+label.block { display: block; margin: 12px 0; }
+label.block > input, label.block > textarea, label.block > select { width: 100%; margin-top: 4px; }
+input, select, textarea {
+  font: inherit; padding: 8px 10px; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff;
+}
+textarea { min-height: 64px; resize: vertical; }
+
+button {
+  font: inherit; cursor: pointer; padding: 9px 16px;
+  border: 1px solid var(--line); background: #fff; border-radius: 8px;
+}
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button.link-btn { border: none; background: none; color: var(--accent); padding: 0; text-decoration: underline; }
+.actions { display: flex; gap: 12px; align-items: center; margin-top: 16px; }
+
+.ptable, .overlay-table { width: 100%; border-collapse: collapse; }
+.ptable th, .ptable td, .overlay-table th, .overlay-table td {
+  text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top;
+}
+.overlay-table input { width: 100%; }
+.center { text-align: center; }
+
+.thumbs { display: flex; gap: 18px; flex-wrap: wrap; }
+.thumb { margin: 0; flex: 1; min-width: 280px; }
+.thumb figcaption { font-weight: 600; margin-bottom: 6px; }
+.thumb img { width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.thumb-empty {
+  border: 1px dashed var(--line); border-radius: 8px; padding: 40px;
+  text-align: center; color: var(--muted); background: #fafafa;
+}
+.yesno { flex: 1; min-width: 240px; }
+
+/* Concept placement */
+.concept-palette { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.concept-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px; border-radius: 14px; cursor: grab;
+  background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3;
+  font-size: 13px; user-select: none;
+}
+.concept-chip.custom { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+.concept-chip:active { cursor: grabbing; }
+.chip-x, .marker-x {
+  border: none; background: transparent; cursor: pointer; font-size: 14px;
+  line-height: 1; padding: 0; color: inherit; opacity: 0.6;
+}
+.chip-x:hover, .marker-x:hover { opacity: 1; }
+.add-concept { display: flex; gap: 8px; margin-bottom: 14px; }
+.add-concept input { flex: 1; }
+
+.drop-image { position: relative; border-radius: 8px; }
+.drop-image img { width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff; display: block; }
+.placement-marker {
+  position: absolute; transform: translate(-50%, -50%); cursor: grab;
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(255, 255, 255, 0.92); border: 1px solid #6366f1; border-radius: 12px;
+  padding: 2px 6px; font-size: 11px; color: #312e81; white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+.placement-marker:active { cursor: grabbing; }
+.marker-dot { width: 7px; height: 7px; border-radius: 50%; background: #6366f1; flex: none; }
+.marker-label { max-width: 160px; overflow: hidden; text-overflow: ellipsis; }

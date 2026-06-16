@@ -4,7 +4,6 @@ import type {
   Note,
   UpdateNoteInput,
 } from '@noteshelf/shared';
-import { normaliseTags } from './notes.js';
 
 /** A tiny in-memory store. Data resets when the server restarts. */
 class NoteStore {
@@ -26,7 +25,6 @@ class NoteStore {
       id: randomUUID(),
       title: input.title,
       body: input.body,
-      tags: normaliseTags(input.tags),
       createdAt: now,
       updatedAt: now,
     };
@@ -41,7 +39,6 @@ class NoteStore {
       ...existing,
       title: input.title ?? existing.title,
       body: input.body ?? existing.body,
-      tags: input.tags ? normaliseTags(input.tags) : existing.tags,
       updatedAt: new Date().toISOString(),
     };
     this.notes.set(id, updated);
@@ -55,18 +52,15 @@ class NoteStore {
   seed(): void {
     this.create({
       title: 'Welcome to Noteshelf',
-      body: 'This is a sample note. Create, tag, filter, and search your notes.',
-      tags: ['Welcome', 'Getting-Started'],
+      body: 'This is a sample note. Create, edit, and delete notes.',
     });
     this.create({
       title: 'Shopping list',
       body: 'Milk, eggs, coffee.',
-      tags: ['Personal', 'Errands'],
     });
     this.create({
       title: 'Sprint planning notes',
-      body: 'Discuss roadmap and assign tasks.',
-      tags: ['Work', 'Planning'],
+      body: 'Discuss the roadmap and assign tasks for the next sprint.',
     });
   }
 }

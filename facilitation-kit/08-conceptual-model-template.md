@@ -1,15 +1,28 @@
 # Conceptual Model Drawing Template
 
-**Participant ID:** ________  **Date:** ________
+> **Digital capture (preferred):** use the **ModelCapture** app (`model-capture/`)
+> running on the participant's VM. It shows the participant a neutral canvas
+> ("Draw how you imagine this works") with **no PRE/POST or ID visible**, saves
+> both drawings, pre-loads the first sketch for the second pass, and provides the
+> moderator coding overlay below as a form. See `model-capture/README.md`. This
+> paper template is the **fallback** (and the reference for what the overlay
+> captures).
 
-> Give this to the participant during the replay phase (or use a blank
-> whiteboard / Excalidraw / FigJam canvas). The goal is to externalise how they
-> think the system is organised. Use **their** words for labels.
+**Participant ID:** ________  **Date:** ________   **[ ] PRE  [ ] POST**
+
+> Used **twice**: a quick **PRE** sketch at the start (Task 0, ≈4 min — captures
+> the naive model before tool exposure) and a richer **POST** update during
+> replay (≈8 min — captures the model after working with the system). For POST,
+> hand the participant their own PRE sketch and ask them to update it; the
+> **PRE→POST delta** is a key finding. Use **their** words for labels.
 
 ## Prompt to read aloud
-> "Sketch how you think this system is organised. Draw the **parts**, how they
-> **relate**, and where you think **knowledge or memory** lives. Any shapes and
-> words you like."
+> **PRE (start):** "Before you start, quickly sketch how you *imagine* this setup
+> is organised — the **parts**, how they **relate**, and where **knowledge or
+> memory** lives. A rough first impression is exactly what I want."
+>
+> **POST (end):** "Here's your first sketch. Now that you've worked with it,
+> **update it** — change anything that's different and add what you've learned."
 
 ## Canvas (if working on paper)
 
@@ -58,3 +71,10 @@ Map the participant's drawing onto the reference model:
 
 ### One-line characterisation of their model
 > ____________________________________________________________
+
+### PRE → POST delta (fill on the POST copy)
+- What changed between their first sketch and this one?
+  > ____________________________________________________________
+- Direction of movement: [ ] toward the reference model [ ] away [ ] no change
+- What in the session triggered the shift (which breakdown/moment)?
+  > ____________________________________________________________
