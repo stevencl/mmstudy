@@ -21,7 +21,7 @@ noteshelf/
   backend/    Express REST API with an in-memory store
   shared/     TypeScript types shared by frontend and backend
   tests/      (empty — a good place to start adding tests)
-  .github/chatmodes/   custom agents: Frontend and Backend specialists
+  .github/agents/   custom agents: Frontend and Backend specialists
 ```
 
 The three layers are intentionally small:
@@ -34,8 +34,8 @@ The three layers are intentionally small:
 
 ## Custom agents
 
-Two custom agents are defined in `.github/chatmodes/` for use in tools that
-support them (e.g. GitHub Copilot in VS Code):
+Two custom agents are defined in `.github/agents/` (`*.agent.md`) for use in
+tools that support them (e.g. GitHub Copilot in VS Code):
 
 - **Frontend** — owns `frontend/`, may read `shared/`, must not edit `backend/`.
 - **Backend** — owns `backend/`, may read/extend `shared/`, must not edit `frontend/`.

@@ -30,7 +30,7 @@ the product owner). The study watches whether participants *expect* that
 propagation to happen for free.
 
 > **Note (deliberate design):** the custom agent definitions
-> (`.github/chatmodes/*.chatmode.md`) do **not** tell the agents "you only know
+> (`.github/agents/*.agent.md`) do **not** tell the agents "you only know
 > your own conversation." We rely on the tool's natural default isolation
 > instead. Telegraphing it in the agent prompt would confound the study — a
 > participant who read it could attribute every breakdown to that line rather
